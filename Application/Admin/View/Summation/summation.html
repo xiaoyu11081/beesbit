@@ -1,0 +1,65 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head"/>
+<title>数据统计-币势得</title>
+
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav"/>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">币势得管理中心</a>
+        </li>
+        <li class="breadcrumb-item active">数据统计</li>
+      </ol>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header text-bishide text-center">
+          <h4><i class="fa fa-table fa-fw"></i>数据统计列表</h4></div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>用户注册总数</th>
+                  <th>B002期订单总数</th>
+                  <th>B002期订单总金额</th>
+                  <th>B002期ETH总收益</th>
+                  <th>B002期ETH提现量</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{$data.usersum}</td>
+                  <td>{$data.ordersum}</td>
+                  <td>{$data.pricesum}</td>
+                  <td>{$data.walletsum}</td>
+                  <td>{$data.payout}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">数据最近更新于 <?php echo date("Y-m-d H:i:s")?></div>
+      </div>
+    </div>
+
+    <!--#include file="include/footer.html"-->
+    <include file="Public:footer"/>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+  </div>
+
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script"/>
+</html>

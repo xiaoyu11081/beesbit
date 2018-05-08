@@ -1,0 +1,64 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head" />
+<title>我的矿机-币势得</title>
+
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+  <!-- Navigation-->
+    <!--#include file="include/nav.html"-->
+  <include file="Public:nav" />
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Personal/index')}">个人中心</a>
+        </li>
+        <li class="breadcrumb-item active">我的矿机</li>
+      </ol>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table fa-fw"></i>矿机状态列表</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>矿机编号</th>
+                  <th>工作状态</th>
+                  <th>订单编号</th>
+                  <th class="text-left" data-placement="right" data-toggle="tooltip" title="矿机本机算力为45MH/S±5%，受网络拒绝率（3%）、挖矿软件抽成（3%）、矿池抽成（3%）影响，实际工作算力低于45MH/S。">算力<i class="fa fa-fw mr-2 fa-exclamation-triangle text-warning" ></i></th>
+                </tr>
+              </thead>
+            <volist name="data" id="vo">
+                <tr>
+                  <td>{$vo.num}</td>
+                  <td><eq name='vo.status' value='1'><span class="badge badge-pill badge-success">运行</span><else /><span class="badge badge-pill badge-warning">故障</span></eq></td>
+                  <td>{$vo.orderid}</td>
+                  <td>{$vo.power} MH/s</td>
+                </tr>
+            </volist>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">更新时间 <?php echo $time;?></div>
+      </div>
+    </div>
+
+<!--#include file="include/footer.html"-->
+    <include file="Public:footer" />
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+  </div>
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script" />
+
+</html>

@@ -1,0 +1,65 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head" />
+<title>客服信息-币势得</title>
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav" />
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Personal/index')}">个人中心</a>
+        </li>
+        <li class="breadcrumb-item active">客服信息</li>
+      </ol>
+		<div class="card-body">
+      <div class="col-lg-6 offset-lg-3">
+        <svg class="icon icon-ziyuan7 card-img-top" aria-hidden="true">
+          <use xlink:href="#icon-ziyuan7"></use>
+        </svg>
+       <div class="card"> 
+         <div class="card-header text-center">尊敬的客户您好：如有遇到任何问题可以用以下方式联系我</div>
+        <div class="card-body">
+          <ul class="list-group" style="padding-right:0">
+            <!--<li class="list-group-item">-->
+              <!--<span class="pull-left">客服编号</span>-->
+              <!--<span class="pull-right">客服编号</span>-->
+            <!--</li>-->
+            <li class="list-group-item">
+              <span class="pull-left">电话</span>
+              <span class="pull-right"><?php echo $info['tel'];?></span>
+            </li>
+            <li class="list-group-item">
+              <span class="pull-left">QQ</span>
+              <span class="pull-right"><?php echo $info['qq'];?></span>
+            </li>
+
+            <li class="list-group-item">
+              <span class="pull-left">邮箱</span>
+              <span class="pull-right"><?php echo $info['mail'];?></span>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--#include file="include/footer.html"-->
+  <include file="Public:footer" />
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+  </a>
+  <!-- Logout Modal-->
+  </div>
+
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script" />
+</html>

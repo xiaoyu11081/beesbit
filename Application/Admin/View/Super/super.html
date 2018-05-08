@@ -1,0 +1,160 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head"/>
+<title>超级管理员-币势得</title>
+
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav"/>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">币势得管理中心</a>
+        </li>
+        <li class="breadcrumb-item active">超级管理员</li>
+      </ol>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header text-bishide text-center">
+          <h4><i class="fa fa-table fa-fw"></i>超级管理员</h4><button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#adddata">
+          增加
+        </button></div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>管理员</th>
+                  <th>权限</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+
+
+              <tbody>
+              <volist name="data" id="vo">
+                <tr>
+                  <td>{$vo.username}</td>
+                  <td>
+                    <eq name='vo.permission' value='0'><span class="badge badge-pill badge-success">无权限</span></eq>
+                    <eq name='vo.permission' value='1'><span class="badge badge-pill badge-success">全部权限</span></eq>
+                    <eq name='vo.permission' value='2'><span class="badge badge-pill badge-success">出纳确认</span></eq>
+                    <eq name='vo.permission' value='3'><span class="badge badge-pill badge-success">会计确认</span></eq>
+                    <eq name='vo.permission' value='5'><span class="badge badge-pill badge-success">客服管理</span></eq>
+                    <eq name='vo.permission' value='6'><span class="badge badge-pill badge-success">公告管理</span></eq>
+                  </td>
+                  <td>
+                    <a href="{:U('Super/lst',array('id'=>$vo['id']))}"  class="badge badge-pill badge-primary" >
+                      编辑
+                    </a>
+                    <eq name='vo.username' value='admin'>
+                     <else/>
+                    <a  type="button" class="badge badge-pill badge-secondary" href="javascript:if(confirm('确实要删除该管理员吗?'))location='{:U('Super/delete',array('id'=>$vo['id']))}'" >删除管理员</a>
+                    </eq>
+                    
+                  </td>
+                </tr>
+
+              </volist>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">数据最近更新于 11:59</div>
+      </div>
+    </div>
+
+    <!--#include file="include/footer.html"-->
+    <include file="Public:footer"/>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+  </div>
+
+  <form method="post" action="{:U('Super/add')}">
+    <div class="modal fade" id="adddata" tabindex="-1" role="dialog" aria-labelledby="bishideModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bishideModalLabel">增加一名管理员</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <font style="vertical-align: inherit;">管理员</font>
+                </span>
+                  </div>
+                  <input name="username" class="form-control" type="text" placeholder="输入信息">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <font style="vertical-align: inherit;">密      码</font>
+                </span>
+                  </div>
+                  <input name="password" class="form-control" type="text" placeholder="输入信息">
+                </div>
+              </div>
+
+            <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <font style="vertical-align: inherit;">角      色</font>
+                </span>
+                </div>
+                <input id="pri" name="permission" type="hidden" value="0">
+                <select id="pri-select" class="custom-select">
+                  <option selected value="0">-无-</option>
+                  <option value="1">超级管理员</option>
+                  <option value="2">出纳管理员</option>
+                  <option value="3">会计管理员</option>
+                  <option value="5">客服管理员</option>
+                  <option value="6">公告管理员</option>
+                </select>
+              </div>
+            </div>
+
+
+              <div class="from-group">
+                <input  type="submit" value="确认" class="btn btn-danger btn-block" type="button">
+              </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </form>
+
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script"/>
+
+
+
+</html>
+<script>
+    $(function () {
+        $("#pri-select").change(function () {
+            var pri=$("#pri-select").find("option:selected").val();
+            $("#pri").val(pri);
+        })
+    })
+</script>

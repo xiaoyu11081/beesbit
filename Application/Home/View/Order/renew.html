@@ -1,0 +1,274 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head" />
+<title>增购天数-币势得</title>
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav" />
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Personal/index')}">个人中心</a>
+        </li>
+        <li class="breadcrumb-item active">购买算力</li>
+        <li class="breadcrumb-item active">增购天数</li>
+      </ol>
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-plus-square fa-fw"></i>
+          增购天数
+          <!-- <i class="fa fa-cog fa-fw pull-right"></i> -->
+        </div>
+
+        <div class="card-body">
+          <!-- <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#bth-coin" role="tab" aria-controls="bth-coin" aria-selected="true">ETH</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">暂未开放</a>
+          </nav> -->
+          <div class="tab-content row" id="nav-tabContent">
+            <div class="tab-pane fade show active col-md-4 offset-md-4" id="bth-coin" role="tabpanel" aria-labelledby="nav-home-tab">
+            </div>
+            <!-- <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <p>目前只支持ETH币种</p>
+            </div> -->
+
+
+            <div class="col-md-4 offset-md-4">
+              <div class="card mb-2">
+                <form  method="post" action="{:U('Order/reorder')}">
+                  <volist name="data" id="vo">
+                    <!--单价信息-->
+                    <input name="univalent" id="univalent" type="hidden" value="200">
+                    <input name="fid" type="hidden" value="{$vo.fid}">
+                    <!--时间-->
+                    <input name="end" type="hidden" value="{$vo.end}">
+                    <!--币种-->
+                    <input  name="coin" type="hidden" value="{$vo.coin}">
+                    <input  type="hidden"  name="power" value="{$vo.power}" >
+                    <input  id="postday" type="hidden" name="day" value="" >
+                    <input  id="postprice" type="hidden"  name="price" value="" >
+
+
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-bishide text-center">
+                    <span class="pull-left">增购算力天数</span>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="pull-left">币种</span>
+                    <span id="coin" class="pull-right">{$vo.coin}</span>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="pull-left">算力额度</span>
+                    <span class="pull-right">MH/S</span>
+                    <span id="power" class="pull-right">{$vo.power}</span>
+
+                  </li>
+
+                  <li class="list-group-item">
+                    <span class="pull-left">剩余时间</span>
+                    <span  class="pull-right">
+                      天
+                    </span>
+                    <span id="useday" class="pull-right">
+                      <?php echo floor(($vo['end']-time())/86400)?>
+                    </span>
+                  </li>
+          
+                  <div class="input-group mt-3  col-md-12 pull-left">
+                    <label class="text-bishide">
+                      请选择增购天数
+                    </label>
+                    <div class="input-group">
+                      <select class="form-control" id="day-select" value="0">
+                        <option value="2" selected>两年</option>
+                        <option value="3">三年</option>
+                        <option value="4">四年</option>
+                        <option value="5">五年</option>
+                        <option value="6">六年</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="input-group mt-3  col-md-12 text-center">
+                    <h6 id="newday"  class="text-bishide">
+
+                    </h6>
+                  </div>
+                  <div class="input-group mt-3  col-md-12 text-center">
+                    <h6 class="text-bishide">
+                    <span class="pull-left">总价格(CNY)：</span>
+                    <span id="price" class="pull-right"></span>
+                      
+                    </h6>
+              </div>
+                          <div class="input-group mt-3 col-md-12 pull-left">
+                    <input class="form-control" id="RinputAgreement" value="请仔细阅读算力协议" disabled="disabled">
+                    </input>
+                    <div class="input-group-append">
+                      <button type="button" class="btn btn-danger mr-1" data-toggle="modal" data-target="#exampleModalLong">
+                        算力协议
+                      </button>
+                    </div>
+                  </div>
+                  <div class="input-group mb-3 mt-3 col-md-10 offset-lg-1" disabled="disabled">
+                    <input type="text" name="" id="Rlink-payment" class="btn btn-danger btn-block text-center" value="同意算力协议后进行订单确认" readonly="readonly">
+                  </div>
+                </ul>
+                  </volist>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--#include file="include/footer.html"-->
+  <include file="Public:footer" />
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+  </a>
+  <!-- Logout Modal-->
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">币势得-算力协议</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-left" id="Agreement">
+          <div class="modal-title text-center text-danger">
+            <h4>算力租赁协议</h4>
+          </div>
+          <p class="text-dark">甲乙双方经友好协商，在平等互利的原则下，就甲方租用乙方提供的“高性能计算机算力”（以下简称“算力”）达成如下协议：
+            <br />
+            <h6><b>第一条：合同项目</b></h6>
+            <p>
+              <br /> （一）租用算力服务
+              <br /> 1、通过internet向甲方提供虚拟算力租用服务。
+              <br /> 2、算力的购买份额以整数叠加，不做拆分供应。
+              <br /> 3、算力租赁协议期满，即结束甲乙双方关系；甲方如有续约意向，需提前向乙方提出书面申请，乙方视情况决定是否续签协议。
+              <br /> （二）乙方附加服务
+              <br /> 1、及时解决算力运营中的问题。
+              <br /> 2、解决算力产生的电力和环境的成本。
+              <br /> 3、日常看管和管理的服务。
+              <br /> （三）算力提供时间
+              <br /> 1、在甲方完成款项支付之日起 72小时后开始提供算力的服务。
+              <br /> 2、在甲方完成款项的支付之日起的 72小时后开始进行时间周期的计算。
+              <br />
+            </p>
+            <h6><b>第二条：甲方权力与义务</b></h6>
+            <p>
+              <br /> （一）由乙方负责提供算力的服务；算力的所有权归属乙方所有。
+              <br /> （二） 甲方享有算力产生的商业价值。
+              <br /> （三）根据本合同的约定，及时履行付款义务。
+              <br />
+            </p>
+            <h6><b>第三条：乙方的权利和义务</b></h6>
+            <p>
+              <br /> （一）保证甲方的数据和资料的安全，不得将这些数据和资料透露给任何第三人或自己利用或者许可他人使用；如甲方发现乙方透露数据和资料给第三人或自己利用或者许可他人使用，甲方将追究乙方的法律责任并由乙方承担因此给甲方造成的一切经济损失（直接或间接）。
+              <br /> （二）乙方负责算力的维护及技术支持等，并采取必要措施使服务器不受病毒侵袭、不受外来物理破坏。
+              <br /> （三）乙方负责算力的正常运行；乙方保证一年中算力服务累计中断时间不超过100工作小时，每次中断时间不超过48小时。
+              <br /> （四）乙方定期对算力服务进行监控。
+              <br /> （五）乙方为甲方的算力程序和数据库提供必要的技术支持。
+              <br /> （六）乙方每周对算力数据进行备份。
+              <br /> （七）乙方承诺含有下列内容的信息不进入网络:
+              <br /> 1、涉及国家秘密和安全的信息内容。
+              <br /> 2、涉及封建迷信,淫秽色情的信息内容。
+              <br /> 3、违反国家民族政策和宗教政策的信息内容。
+              <br /> 4、其它有损于社会秩序,社会治安,社会公共道德和侵害他人合法权益的信息内容。
+              <br />
+            </p>
+            <h6><b>第四条：合同的有效期</b></h6>
+            <p>
+              <br /> 1、本合同有效期为 算力租赁期。
+              <br />
+            </p>
+            <h6><b>第五条：价格及结算方式</b></h6>
+            <p>
+              <br /> 1、结算方式可以通过支票、信汇、电汇和现金结算。
+              <br /> 2、在合同 确认后甲方安排付款。
+              <br />
+            </p>
+            <h6><b>第六条：免责条款</b></h6>
+            <p>
+              <br /> （一）Internet是全球互联网络，由于其他通路上的偶然阻塞会造成用户的访问速率下降；有时在对算力的服务器进行设置或安装用户程序时可能会产生一段时间的中断，以上现象在任何算力服务器上都有可能产生，属正常现象。
+              <br /> （二）因不可抗力(地震、火灾、停电等)及政策风险等因素造成双方协议不能履行造成的损失由甲乙双方各自承担。
+              <br />
+            </p>
+            <h6><b>第七条：争议解决</b></h6>
+            <p>
+              <br /> 当甲乙双方争议发生时,双方应友好协商解决,若协商不成,任何一方有权向南京市建邺区人民法院提起诉讼。
+              <br />
+            </p>
+            <h6><b>第八条：违约责任</b></h6>
+            <p>
+              <br /> （一）甲方违约或签约后没有及时履行支付款项义务时，乙方有权停止算力的服务布置，直至甲方恢复履约，由此造成的期间损失由甲方自行负担。
+              <br /> （二）乙方未按约提供算力及维护，甲方有权要求乙方退还全部款项，或共同协商解决。
+              <br /> （三）如因乙方违约，甲方有权要求乙方承担诉讼费、律师费、保全费、公证费等实现债权的全部费用。
+              <br />
+            </p>
+            <h6><b>第九条：其他</b></h6>
+            <p>
+              <br /> （一）本协议未尽事宜,经双方协商一致达成补充意见,补充意见作为本协议不可分割的一部分与本协议具有同等法律效力。
+              <br /> （二）无论因任何原因导致本协议的终止、解除，乙方没有义务继续保留甲方在租用算力的现存的所有数据和资料。
+              <br /> （三）本协议一式两份,甲乙双方各执一份，经过阅读后点击确认生效。
+            </p>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" disabled="disabled" id="Rbtn-Agreement">同意</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script" />
+</html>
+<script>
+    $(function () {
+        var power=$("#power").text();
+        var day=$("#day-select").val();
+
+        var price=$("#price").text();
+        var useday=$("#useday").text();
+
+        //计算新的剩余时间 单位天
+        var newday=365*day+useday*1;
+        //单价univalent
+        var univalent=$("#univalent").val();
+        price=power*125*day/2;
+        $("#price").text(price);
+        $("#postday").val(day);
+        $("#postprice").val(price);
+        $("#newday").text("续费后订单剩余时间(天)："+newday)
+        $("select").change(function () {
+            var end=$("#end").val();
+            var day=$("#day-select").val();
+            var newday=day*365+useday*1;
+            $("#newday").text("续费后订单剩余时间(天)："+newday)
+            //模拟一个算法 算力除以100乘以天数再乘以单价，
+            price=power*125*day/2;
+            $("#price").text(price);
+            $("#postprice").val(price);
+            $("#postday").val(day);
+        })
+    })
+
+</script>

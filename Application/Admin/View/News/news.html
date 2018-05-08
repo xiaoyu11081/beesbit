@@ -1,0 +1,95 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head"/>
+<title>公告列表-币势得</title>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav"/>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Order/index')}">币势得管理中心</a>
+        </li>
+        <li class="breadcrumb-item active">公告列表</li>
+      </ol>
+
+      <div class="card mb-3">
+        <div class="card-header text-bishide text-center">
+          <h4><i class="fa fa-plus-square fa-fw"></i>公告列表</h4>
+          <!-- <i class="fa fa-cog fa-fw pull-right"></i> -->
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>公告ID</th>
+                  <th>公告标题</th>
+                  <th>公告内容</th>
+                  <th>发布时间</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+
+              <tbody>
+              <volist name="data" id="vo">
+                <tr>
+                  <td>{$vo.id}</td>
+                  <td>{$vo.title}</td>
+                  <td>{$vo.body}</td>
+                  <td><?php echo date("Y-m-d H:i:s",$vo['time']);?></td>
+                  <td>
+                    <a type="button" href="{:U('News/delete',array('id'=>$vo['id']))}" class="badge badge-pill badge-primary">
+                      删除
+                    </a>
+                  </td>
+                </tr>
+              </volist>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--#include file="include/footer.html"-->
+    <include file="Public:footer"/>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">币势得-算力协议</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="Agreement">
+          请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议 请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议 请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议 请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议 请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议 请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议 请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议 请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议 请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议 请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议 请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议请仔细阅读完算力协议
+          <span class="text-bishide">请仔细阅读到底部！</span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" disabled="disabled" id="btn-Agreement">同意</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script"/>
+</html>

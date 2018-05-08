@@ -1,0 +1,205 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head"/>
+<title>确认订单-币势得</title>
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav"/>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Personal/index')}">个人中心</a>
+        </li>
+        <li class="breadcrumb-item active">确认订单</li>
+      </ol>
+
+      <div class="card mb-3">
+        <div class="card-header text-bishide">
+          <i class="fa fa-fw fa-exclamation"></i>
+          订单详情-请再次确认您的会员订单信息
+          <!-- <i class="fa fa-cog fa-fw pull-right"></i> -->
+        </div>
+
+        <div class="card-body">
+          <!-- <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#bth-coin" role="tab" aria-controls="bth-coin" aria-selected="true">ETH</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">暂未开放其他币种</a>
+            </div>
+          </nav> -->
+          <div class="alert alert-warning" role="alert">
+            <strong>尊敬的用户您好！</strong> 请仔细查看并核对您所选的订单，按照以下信息进行转账汇款，推荐使用
+            <b class="text-bishide">网上银行/手机银行</b>进行转账汇款。
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-5 offset-md-1">
+                <div class="card mb-2">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item text-bishide text-center">
+                      <span class="pull-left">会员订单明细</span>
+                    </li>
+                    <li class="list-group-item">
+                      <span>会员权益说明</span>
+                      <ol>
+                        <li>会员权益说明会员权益说明</li>
+                        <li>会员权益说明会员权益说明</li>
+                        <li>会员权益说明会员权益说明</li>
+                        <li>会员权益说明会员权益说明</li>
+                      </ol>
+
+                    </li>
+                    <!--<li class="list-group-item">-->
+                      <!--<span class="pull-left">会员种类</span>-->
+                      <!--<span class="pull-right">{$data['type']}</span>-->
+                    <!--</li>-->
+                    <li class="list-group-item">
+                      <span class="pull-left">价格
+                        <a href="javascript:void(0)" class="text-bishide">(银行转账需收取手续费)</a>
+                      </span>
+                      <span class="pull-right">{$data['price']}</span>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left">订单号</span>
+                      <span class="pull-right">{$data['orderid']}</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="card mb-2">
+                  <li class="list-group-item text-bishide text-center">
+                    <span class="text-bishide pull-left">收款方信息</span>
+                    <span class="text-bishide pull-right" data-placement="right" data-toggle="tooltip" title="订单支付确认已币势得对公账户收到转账为准，50W以下转账请尽量于银行工作时间内选择手机银行实时转账，大额转账可能需要1-3个工作日到账，给您带来的不便，尽请谅解。">
+                      <i class="fa fa-fw mr-2 fa-exclamation-triangle text-warning"></i>支付说明</span>
+                  </li>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                      <span class="pull-left">开户名</span>
+                      <span class="pull-right">湖北必势得云计算技术有限公司</span>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left">开户银行</span>
+                      <span class="pull-right">民生银行光谷高科技支行</span>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left">开户银行卡号</span>
+                      <span class="pull-right">604222235</span>
+                    </li>
+                    <li class="list-group-item">
+                      <span class="pull-left">
+                        <i class="fa fa-fw fa-circle text-bishide mr-2"></i>转账备注信息(请务必填写)</span>
+                      <span class="pull-right text-bishide">
+                        <b>{$data['orderid']}</b>
+                      </span>
+                    </li>
+                    <li class="list-group-item">
+                      <form>
+                        <div class="form-row">
+                          <div class="input-group">
+                            <input  id="paycode"  type="text" class="form-control custom-select-sm" id="validationTooltipUsername" placeholder="请输入银行转账回执码" value="" aria-describedby="validationTooltipUsernamePrepend" required>
+                            <div class="invalid-tooltip">
+                              请输入银行转账回执码
+                            </div>
+                          </div>
+                        </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">BTC</div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">BTC</div> -->
+        </div>
+        <div class="card-footer">
+          <div class="text-center">
+          <if condition="$data['status'] eq 1">
+              <!--订单id-->
+              <input type="hidden" id="orderid" value="{$data['orderid']}">
+              <a id="paybutton" class="btn btn-danger" >
+                <i class="fa fa-fw fa-check-circle-o"></i>提交银行回执单号</a>
+
+              <a  id="paybutton1" class="btn btn-danger" href="{:U('Vip/alpay',array('orderid'=>$data['orderid']))}">
+                <i class="fa fa-fw fa-check-circle-o"></i>确认支付</a>
+            <else />
+            <span class="btn btn-success" >
+              <i class="fa fa-fw fa-check-circle-o"></i>商家正在确认中</span>
+          </if>
+          <a class="btn btn-secondary" data-target="#cancel" data-toggle="modal">
+            <i class="fa fa-fw fa-close"></i>取消订单</a>
+        </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!--#include file="include/footer.html"-->
+    <include file="Public:footer"/>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+  </div>
+
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script"/>
+</html>
+
+<!-- 取消订单 -->
+<div class="modal fade" id="cancel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">请确认是否取消订单</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- <div class="modal-body">
+        1
+      </div> -->
+      <div class="modal-footer">
+        <a class="btn btn-danger" href="{:U('Vip/cancle',array('orderid'=>$data['orderid']))}">取消</a>
+        <a class="btn btn-secondary" data-dismiss="modal">返回</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $(function () {
+        $("#paybutton1").hide();
+        $("#paybutton").click(function () {
+            var paycode=$("#paycode").val();
+            var orderid=$("#orderid").val();
+            if(paycode==""){
+                $("#paycode").focus();
+                layer.msg("请输入转账回执单号");
+            }else {
+                $.ajax({
+                    type:"POST",
+                    url:"{:U('Vip/paycode')}",
+                    data: {"paycode":paycode,"orderid":orderid},
+                    dataType:"json",
+                    success:function(msg){
+                        if(msg.status==1){
+                            $("#paybutton").hide();
+                            $("#paybutton1").show();
+                        }else {
+                            layer.msg(msg.msg);
+                        }
+                    }
+                });
+            }
+
+        })
+    })
+</script>

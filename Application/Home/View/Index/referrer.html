@@ -1,0 +1,162 @@
+<!--#include  file="include/main-css.html" -->
+<include file="Public:main-css" />
+<title>服务指南</title>
+
+</head>
+
+<body>
+
+  <!--#include file="include/account-header.html"  -->
+  <include file="Public:account-header" />
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="referrer">
+    <div class="carousel-container">
+      <div class="carousel-content">
+        <h1 class="wow fadeInUp"><span>币势得 推荐人计划</span></h1>
+        <div class="container wow fadeInUp">
+          <h6>为答谢广大客户支持，并让更多人享受挖矿的乐趣与收益，算力投特推出推荐人计划</h6>
+          <h6>您可以一键生成个人专属推荐链接，成功邀请好友使用算力投服务，就能获得BTC奖励哦</h6>
+        </div>
+      </div>
+
+    </div>
+  </section id="referrer">
+
+  <section id="link">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 pull-left wow fadeInUp">
+          <label class="smallL">
+            <i class="fa fa-fw fa-book"></i>邀请码</label>
+          <div class="input-group mb-3">
+            <!--单价信息-->
+
+            <input id="foo" class="form-control" value="{$bsdcode}" readonly="readonly" placeholder="登录获取专属邀请码">
+            <div class="input-group-append">
+              <button id="copy-1" type="button" data-clipboard-target="#foo" class=" button-raised button-caution copyBtn">复制</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 pull-left wow fadeInUp">
+          <label class="smallL">
+            <i class="fa fa-fw fa-link"></i>邀请链接</label>
+          <div class="input-group mb-3">
+            <!--单价信息-->
+
+            <input id="foo-1" class="form-control" <if condition="$bsdcode !=null">value="http://www.beesbit.com/User/regist.html?bsdcode={$bsdcode}"</if>  readonly="readonly" placeholder="登录获取专属邀请链接">
+            <div class="input-group-append">
+              <button id="copy-2" type="button" data-clipboard-target="#foo-1" class="button-raised button-caution copyBtn">复制</button>
+            </div>
+          </div>
+        </div>
+        <div class="card col-lg-12 wow fadeInUp p-plan mt-5 bg-none">
+          <div class="card-header">
+            算力合约推荐人计划
+          </div>
+          <div class="card-body">
+            当有用户通过您的邀请链接注册并购买算力投合约并完成付款后，您将获得价值100元的BTC奖励。 每个被邀请人给您带来的奖励上限为价值1000元的BTC。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- #intro -->
+
+  <main id="main">
+
+    <!-- #why -->
+    <!-- <section id="why">
+      <div class="container">
+        <header class="section-header wow fadeInUp">
+          <h3>为什么选择云计算挖矿？</h3>
+        </header>
+        <div class="col-lg-12 wow fadeInUp">
+          <div class="row justify-content-around">
+            <div class="card-body col-lg-4">
+              <img class="card-img-top" src="img/compare-1.png" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text text-center">选择币势得云算力
+                  <br> 在家轻轻松松获取收益</p>
+              </div>
+            </div>
+            <div class="card-body col-lg-4">
+              <img class="card-img-top" src="img/compare-2.png" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text text-center">在家挖矿体验差
+                  <br> 需要忍受各种负面因素</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 offset-md-3 text-center wow fadeInUp mt-5">
+          <p class="text-left">
+            我们为客户提供了一种轻松简单的挖矿手段在购买算力之后我们完全帮您解决了后顾之忧； 不需要您维护您的矿机——这一切我们帮您代劳; 不需要您付出宝贵的时间——这一切都交给我们； 不需要您忍受巨大的噪音——我们替您承受； 您只需一键查看您的钱包，就能看见收益源源不断。
+          </p>
+        </div>
+        <div class="col-lg-12 col-md-12 wow fadeInUp">
+          <p class="card-text text-center col-md-4 offset-md-4">
+            <a href="#" class="btn btn-danger btn-block">立即获取算力</a>
+          </p>
+        </div>
+
+    </section> -->
+    <!-- #featured-services -->
+    <section id="featured-services">
+      <header class="section-header wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+        <h3>推荐人计划详解</h3>
+      </header>
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 box wow fadeInUp">
+            <i class="ion-ios-bookmarks-outline"></i>
+            <h4 class="title"><a href="">如何参与算力投推荐人计划？</a></h4>
+            <p class="description">把您的推荐人计划专属链接、加上您的推荐语分享到微 信朋友圈，微信群，微博，博客等社交网络中。分享的 越多，被使用的几率就越大！</p>
+          </div>
+
+          <div class="col-lg-4 box wow fadeInUp box-bg">
+            <i class="ion-ios-stopwatch-outline"></i>
+            <h4 class="title"><a href="">算力投推荐人计划如何运作？</a></h4>
+            <p class="description">注册并登陆算力投账户，在网页顶部“推荐人计划”页 面中查看获取您账号专属的推荐人计划链接，当有其他用户通过您的专属链接购买算力投的算力合约并完成付款后，您将获得一定价值的BTC奖励，BTC汇率参考奖 励发放时bitfinex.com汇率。获取的BTC会以“奖励”的形式，在此批合约算力上线时直接转入您的算力投账户钱包里，您可以在币种账单页面查看。</p>
+          </div>
+
+          <div class="col-lg-4 box wow fadeInUp">
+            <i class="ion-ios-heart-outline"></i>
+            <h4 class="title"><a href="">推荐人计划适用范围和时间？</a></h4>
+            <p class="description">注册并登陆算力投账户，在网页顶部“推荐人计划”页 面中查看获取您账号专属的推荐人计划链接，当有其他用户通过您的专属链接购买算力投的算力合约并完成付款后，您将获得一定价值的BTC奖励，BTC汇率参考奖 励发放时bitfinex.com汇率。获取的BTC会以“奖励”的形式，在此批合约算力上线时直接转入您的算力投账户钱包里，您可以在币种账单页面查看。</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <section id="call-to-action" class="wow fadeIn">
+    <div class="container text-center">
+      <h3 class="mb-4">现在开始币势得云挖矿</h3>
+      <p class="card-text text-center col-md-4 offset-md-4">
+        <if condition="isset($_SESSION['user'])">
+          <a href="{:U('Referee/index')}" class="btn btn-danger btn-block">查看奖励</a>
+          <else/>
+          <a href="{:U('User/login')}" class="btn btn-danger btn-block">查看奖励</a>
+        </if>
+      </p>
+    </div>
+  </section>
+
+  <!--#include file="include/main-footer.html"  -->
+  <include file="Public:main-footer" />
+  <a href="#" class="back-to-top">
+    <i class="fa fa-chevron-up"></i>
+  </a>
+  <include file="Public:main-js" />
+  <!--#include file="include/main-js.html"  -->
+</body>
+
+</html>

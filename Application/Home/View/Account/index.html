@@ -1,0 +1,78 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head" />
+<title>提现记录-币势得</title>
+
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav" />
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Personal/index')}">个人中心</a>
+        </li>
+        <li class="breadcrumb-item active">提现记录</li>
+      </ol>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table fa-fw"></i>提现记录详情列表</div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>提现地址</th>
+                  <th>币种</th>
+                  <th>数量</th>
+                  <th>时间</th>
+                  <th>状态</th>
+                  <th>备注信息</th>
+                </tr>
+              </thead>
+          <volist name="data" id="vo">
+                <tr>
+                  <td>{$vo.address}</td>
+                  <td>{$vo.coin}</td>
+                  <td>{$vo.num}</td>
+                  <td>{$vo.time|date='Y-m-d H:i:s',###}</td>
+                  <td>
+                    <eq name='vo.status' value='3'>
+                      <span class="badge badge-pill badge-secondary">订单已取消</span>
+                      <else/>
+                      <eq name='vo.status' value='2'><span class="badge badge-pill badge-success">受理成功</span>
+                        <else /><span class="badge badge-pill badge-warning">订单正在受理</span>
+                      </eq>
+                    </eq>
+
+                  </td>
+
+              <td>{$vo.content}</td>
+                </tr>
+          </volist>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">更新时间 <?php echo $time;?></div>
+      </div>
+    </div>
+
+    <!--#include file="include/footer.html"-->
+    <include file="Public:footer" />
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+  </div>
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script" />
+
+</html>

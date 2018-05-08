@@ -1,0 +1,109 @@
+<!--==========================
+  Footer
+============================-->
+<script src="https://cdn.bootcss.com/popper.js/1.14.1/esm/popper.js"></script>
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6 footer-info">
+          <h3><svg class="icon mr-2 icon-ziyuan5 mr-2" aria-hidden="true">
+<use xlink:href="#icon-ziyuan5"></use></svg>币势得</h3>
+          
+			<if condition="!isset($_SESSION['user'])">
+            <a href="{:U('User/regist')}" class="text-white btn btn-danger btn-block">立即注册</a>
+            <a href="{:U('User/login')}" class="text-white btn btn-danger btn-block">账号登录</a>
+          </if>
+          
+        </div>
+
+        <div class="col-lg-2 col-md-6 footer-links hidden-xs-down">
+          <h4>报价</h4>
+          <ul>
+            <li>
+              <a target="_blank" href="https://block.cc/">Block.cc</a>
+            </li>
+            <li>
+              <a target="_blank" href="https://www.aicoin.net.cn/">AICOIN</a>
+            </li>
+            <li>
+              <a target="_blank" href="https://www.feixiaohao.com/">非小号</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 footer-links hidden-xs-down">
+          <h4>交易</h4>
+          <ul>
+            <li>
+              <a target="_blank" href="https://www.huobi.pro">火币网</a>
+            </li>
+            <li>
+              <a target="_blank" href="https://www.okex.cn">OKEX</a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6 footer-links hidden-xs-down">
+          <h4>资讯</h4>
+          <ul>
+            <li>
+              <a target="_blank" href="http://www.8btc.com">巴比特</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>联系我们</h4>
+
+          <div class="social-links">
+            <a class="btn">
+              <i class="fa fa-phone"></i>
+            </a>
+              热线电话：<a href="tel:027-65523960">027-65523960</a>
+            <br>
+            <a id="bishide" tabindex="0" class="btn mt-1" role="button" data-toggle="hover" data-html="true">
+              <i class="fa fa-qq"></i>
+            </a>
+            <span>
+              QQ群号：597776431
+            </span>
+            <!-- <a id="wechat" style="background-image:url('app.png')" class="btn" data-toggle="popover" data-placement="right">
+              <i class="fa fa-weixin"></i>
+            </a>
+            <a id="weibo" style="background-image:url('app.png')" class="btn" data-toggle="popover" data-placement="right">
+              <i class="fa fa-weibo"></i>
+            </a> -->
+
+          </div>
+
+        </div>
+
+        <!-- <div class="col-lg-3 col-md-6 footer-newsletter">
+          <h4>Our Newsletter</h4>
+          <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
+          <form action="" method="post">
+            <input type="email" name="email">
+            <input type="submit" value="Subscribe">
+          </form>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid position-relative pb-3">
+    <div class="copyright">
+      &copy; Copyright
+      <strong class="text-bishide">币势得</strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!--
+        All the links in the footer should remain intact.
+        You can delete the links only if you purchased the pro version.
+        Licensing information: https://bootstrapmade.com/license/
+        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
+      -->
+      <a>湖北必势得云计算技术有限公司</a>
+    </div>
+  </div>
+</footer>

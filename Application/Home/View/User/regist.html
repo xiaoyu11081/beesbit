@@ -1,0 +1,94 @@
+<include file="Public:head"/>
+  <title>注册账号-币势得</title>
+
+</head>
+
+<body class="bg-dark">
+
+  <!--==========================
+    Header
+  ============================-->
+  <include file="Public:account-header"/>
+  <!-- #header -->
+
+  <div class="container mb-2">
+    <div class="card card-register mx-auto">
+      <div class="card-header text-bishide">欢迎来到币势得！ 立即注册</div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label>注册账号</label>
+            <input class="form-control" type="text" id="tel" name="tel" placeholder="输入手机号" maxlength="11" minlength="11">
+          </div>
+          <label for="basic-url">
+            <font style="vertical-align: inherit;">
+              <font style="vertical-align: inherit;">短信验证</font>
+            </font>
+          </label>
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="输入验证码" name="telcode" aria-label="Recipient's username" aria-describedby="basic-addon2" maxlength="6">
+            <div class="input-group-append">
+            <input type="button" class="btn-danger" value="获取验证码" id="sendcode" onclick="settime(this)" />
+            </div>
+          </div>
+          <div class="form-group">
+              <div class="form-group">
+                <label for="exampleInputPassword1">密码</label>
+                <input class="form-control" id="exampleInputPassword1" name="password" type="password" placeholder="输入至少8位数字英文组合密码" minlength="8">
+              </div>
+              <div class="form-group">
+                <label for="exampleConfirmPassword">确认密码</label>
+                <input class="form-control" id="exampleConfirmPassword" name="password2" type="password" placeholder="输入至少8位数字英文组合密码" minlength="8">
+              </div>
+          </div>
+          <input  class="btn btn-danger btn-block" type="submit" value="注册">
+        </form>
+        <div class="text-center">
+          <a class="d-block small mt-3 pull-left" href="{:U('User/login')}">账号登录</a>
+          <a class="d-block small mt-3 pull-right" href="{:U('User/forgot')}">忘记密码?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<include file="Public:script"/>
+</html>
+<script>
+    $('form').submit(function(){
+
+        $(this).ajaxSubmit({
+            url:"{:U('regist')}",
+            type:'post',
+            dataType:'json',
+            success:function(msg){
+                if(msg.status==1){
+                    //表示提交注册成功
+                    window.location.href = "{:U('Personal/index')}";
+                }else{
+                    layer.msg(msg.msg);
+                }
+            }
+        });
+        //阻止当前的表单默认的提交
+        return false;
+    });
+
+    //实现用户点击按钮发送验证
+    $('#sendcode').click(function(){
+        //获取当前用户的输入的手机号
+        var tel = $('#tel').val();
+        $.ajax({
+            url:"{:U('sendcode2')}",
+            data:{tel:tel},
+            type:'post',
+            success:function(msg){
+                if(msg.status==0){
+                    layer.msg(msg.msg);
+                }else if(msg.status ==1){
+                    layer.msg('发送成功');
+                }
+            }
+        });
+    });
+</script>

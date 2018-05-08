@@ -1,0 +1,6 @@
+.bg-dark {
+  background: url(../img/loginbg.png) center 316px repeat-x, -webkit-linear-gradient(bottom, white, #f8f9fb);
+  background: url(../img/loginbg.png) center 316px repeat-x, -moz-linear-gradient(bottom, white, #f8f9fb);
+  background: url(../img/loginbg.png) center 316px repeat-x, -ms-linear-gradient(bottom, white, #f8f9fb);
+  background: url(../img/loginbg.png) center 316px repeat-x, -o-linear-gradient(bottom, white, #f8f9fb);
+}

@@ -1,0 +1,80 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head"/>
+<title>公告发布-币势得</title>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav"/>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Super/index')}">权限管理</a>
+        </li>
+        <li class="breadcrumb-item active">编辑</li>
+      </ol>
+      <form method="post"  action="{:U('Super/edit')}">
+
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="text-bishide text-center"><i class="fa fa-fw fa-file-text"></i>权限修改</h4>
+          </div>
+          <volist name="data" id="vo">
+            <input  name="id" type="hidden" value="{$vo.id}">
+          <div class="card-body">
+            <div class="from-group mb-3">
+              <label>管理员</label>
+              <input name="username" type="text" class="form-control" value="{$vo.username}" disabled>
+            </div>
+            <div class="from-group mb-3">
+              <label>新密码</label>
+              <input name="password" type="text" class="form-control" value="" placeholder="无更改可不填" >
+            </div>
+            <div class="from-group mb-3">
+              <label>角色选择</label>
+              <input id="pri" name="permission" type="hidden" value="{$vo.permission}">
+              <select id="pri-select" class="custom-select">
+                 <option  <if condition="$vo.permission eq 0"> selected</if>  value="0">-无-</option>
+                <option <if condition="$vo.permission eq 1"> selected</if> value="1">超级管理员</option>
+                <option <if condition="$vo.permission eq 2"> selected</if> value="2">出纳管理员</option>
+                <option <if condition="$vo.permission eq 3"> selected</if> value="3">会计管理员</option>
+                <option <if condition="$vo.permission eq 5"> selected</if> value="5">客服管理员</option>
+                <option <if condition="$vo.permission eq 6"> selected</if> value="6">公告管理员</option>
+              </select>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="col-md-4 offset-md-4">
+              <input type="submit"  value="保存更改" class="btn btn-danger btn-block">
+              </input>
+            </div>
+          </div>
+          </volist>
+        </div>
+      </div>
+      </form>
+    </div>
+
+    <!--#include file="include/footer.html"-->
+    <include file="Public:footer"/>
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script"/>
+</html>
+
+<script>
+  $(function () {
+      $("#pri-select").change(function () {
+          var pri=$("#pri-select").find("option:selected").val();
+          $("#pri").val(pri);
+      })
+  })
+</script>

@@ -1,0 +1,207 @@
+    <!--#include file="include/head.html"-->
+    <include file="Public:head" />
+  <title>订单详情-币势得</title>
+
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+  <!-- Navigation-->
+    <!--#include file="include/nav.html"-->
+  <include file="Public:nav" />
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Personal/index')}">个人中心</a>
+        </li>
+        <li class="breadcrumb-item active">订单详情</li>
+      </ol>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table fa-fw"></i>订单详情列表</div>
+        <div class="card-body">
+          <div class="table-responsive hidden-xs-down">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>订单编号</th>
+                  <th>开始时间</th>
+                  <th>到期时间</th>
+                  <th>订单周期 </th>
+                  <th>算力</th>
+                  <th>订单价格 </th>
+                  <th>订单种类</th>
+                  <th>支付状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+          <volist name="data" id="vo">
+                <tr>
+                  <td>{$vo.orderid}</td>
+                  <td>{$vo.start|date='Y-m-d',###}</td>
+                  <td>{$vo.end|date='Y-m-d',###}</td>
+                  <td>{$vo.day}年</td>
+                  <td>{$vo.power} MH/s</td>
+                  <td>{$vo.price} CNY</td>
+                  <td>
+                    <eq name='vo.retype' value='1'><span class="text-success">全新订单</span></eq>
+                    <eq name='vo.retype' value='2'><span class="text-info">续费订单</span></eq>
+                  </td>
+                  <td>
+                    <eq name='vo.status' value='1'><span class="badge badge-pill badge-warning">未支付</span></eq>
+                    <eq name='vo.status' value='2'><span class="badge badge-pill badge-success">已支付</span></eq>
+                    <eq name='vo.status' value='3'>
+                      <span class="badge badge-pill badge-secondary">订单已取消</span>
+                    <else/>
+                      <eq name='vo.code' value='2'><span class="badge badge-pill badge-success">正在运行</span><else /><span class="badge badge-pill badge-warning">正在部署</span></eq>
+                    </eq>
+
+
+                  </td>
+
+                  <td>
+                    <eq name='vo.status' value='1'>
+                      <a href="{:U('Order/checkorder')}" class="badge badge-pill badge-danger">
+                      <i class="fa fa-fw fa-check-circle-o"></i>立即支付</a>
+                      <a class="badge badge-pill badge-secondary" href="{:U('Order/orderconfirm',array('orderid'=>$vo['orderid'],'old'=>1))}">
+                        <i class="fa fa-fw fa-close"></i>取消订单</a>
+                    </eq>
+
+                    <eq name='vo.status' value='2'>
+                      <eq name='vo.retype' value='1'>
+                        <eq name='vo.code' value="2">
+                          <a href="{:U('Order/reorder')}?id={$vo.id}" class="badge badge-pill badge-danger">
+                            <i class="fa fa-fw fa-check-circle-o"></i>立即续费</a>
+                          <else/>
+                          <a class="badge badge-pill badge-secondary" href="{:U('Order/orderconfirm',array('orderid'=>$vo['orderid'],'old'=>1))}">
+                            <i class="fa fa-fw fa-close"></i>取消订单</a>
+                        </eq>
+
+                        <else/>
+                        <eq name='vo.code' value="1">
+                          <a class="badge badge-pill badge-secondary" href="{:U('Order/orderconfirm',array('orderid'=>$vo['orderid'],'old'=>1))}">
+                            <i class="fa fa-fw fa-close"></i>取消订单</a>
+                          <else/>
+                          <span class="badge badge-pill badge-success">续费时间已添加至原始订单</span>
+                        </eq>
+                      </eq>
+                    </eq>
+
+                  </td>
+                </tr>
+          </volist>
+            </table>
+
+
+
+
+
+
+
+
+          </div>
+
+          <div class="row hidden-sm-up">
+            <div class="col-md-5">
+              <volist name="data" id="vo">
+              <div class="card mb-2">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item text-bishide text-center">
+                    <span>订单编号 : {$vo.orderid}</span>
+                  </li>
+                  <li class="list-group-item text-center">
+                    <eq name='vo.status' value='1'><span class="badge badge-pill badge-warning">未支付</span></eq>
+                    <eq name='vo.status' value='2'><span class="badge badge-pill badge-success">已支付</span></eq>
+                    <eq name='vo.status' value='3'>
+                      <span class="badge badge-pill badge-secondary">订单已取消</span>
+                      <else/>
+                      <eq name='vo.code' value='2'><span class="badge badge-pill badge-success">正在运行</span><else /><span class="badge badge-pill badge-warning">正在部署</span></eq>
+                    </eq>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="pull-left">开始时间</span>
+                    <span class="pull-right">{$vo.start|date='Y-m-d',###}</span>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="pull-left">到期时间</span>
+                    <span class="pull-right"> {$vo.end|date='Y-m-d',###}</span>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="pull-left">订单周期</span>
+                    <span class="pull-right">{$vo.day}年</span>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="pull-left">算力</span>
+                    <span class="pull-right">{$vo.power} MH/s</span>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="pull-left">订单种类</span>
+                        <eq name='vo.retype' value='1'><span class="text-success pull-right">全新订单</span></eq>
+                    <eq name='vo.retype' value='2'><span class="text-info pull-right">续费订单</span></eq>
+
+                  </li>
+                  <li class="list-group-item">
+                    <span class="pull-left">订单币种</span>
+                    <span class="pull-right">{$vo.coin}</span>
+                  </li>
+                  <li class="list-group-item">
+                    <span class="pull-left">订单价格</span>
+                    <span class="pull-right">{$vo.price} CNY</span>
+                  </li>
+
+                </ul>
+                <div class="card-footer text-center">
+                  <eq name='vo.status' value='1'>
+                    <a href="{:U('Order/checkorder')}" class="btn btn-danger">
+                      <i class="fa fa-fw fa-check-circle-o"></i>立即支付</a>
+                    <a class="btn btn-secondary" href="{:U('Order/orderconfirm',array('orderid'=>$vo['orderid'],'old'=>1))}">
+                      <i class="fa fa-fw fa-close"></i>取消订单</a>
+                  </eq>
+
+                  <eq name='vo.status' value='2'>
+                    <eq name='vo.retype' value='1'>
+                      <eq name='vo.code' value="2">
+                        <a href="{:U('Order/reorder')}?id={$vo.id}" class="btn btn-danger">
+                          <i class="fa fa-fw fa-check-circle-o"></i>立即续费</a>
+                        <else/>
+                        <a class="btn btn-secondary" href="{:U('Order/orderconfirm',array('orderid'=>$vo['orderid'],'old'=>1))}">
+                          <i class="fa fa-fw fa-close"></i>取消订单</a>
+                      </eq>
+
+                      <else/>
+                      <eq name='vo.code' value="1">
+                        <a class="btn btn-secondary" href="{:U('Order/orderconfirm',array('orderid'=>$vo['orderid'],'old'=>1))}">
+                          <i class="fa fa-fw fa-close"></i>取消订单</a>
+                        <else/>
+                        <span class="btn btn-success">续费时间已添加至原始订单</span>
+                      </eq>
+                    </eq>
+                  </eq>
+                </div>
+              </div>
+              </volist>
+            </div>
+          </div>
+
+        </div>
+        <div class="card-footer small text-muted">更新时间 <?php echo $time;?></div>
+      </div>
+    </div>
+
+<!--#include file="include/footer.html"-->
+    <include file="Public:footer" />
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+  </div>
+</body>
+
+    <!--#include file="include/script.html"-->
+    <include file="Public:script" />
+
+</html>

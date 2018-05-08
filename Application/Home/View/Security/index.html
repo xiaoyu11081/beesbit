@@ -1,0 +1,390 @@
+<include file="Public:head"/>
+<!--#include file="include/head.html"-->
+<title>基本信息-币势得</title>
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+  <!-- Navigation-->
+  <include file="Public:nav"/>
+  <!--#include file="include/nav.html"-->
+  <div class="content-wrapper">
+    <div class="container-fluid">
+              <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{:U('Personal/index')}">个人中心</a>
+          </li>
+          <li class="breadcrumb-item active">
+            安全中心</li>
+        </ol>
+      <div class="col-md-12 col-lg-8">
+        <div class="card mb-3">
+          <div class="card-header">
+            <i class="fa fa-address-card fa-fw"></i>
+            个人信息
+            <!-- <i class="fa fa-cog fa-fw pull-right"></i> -->
+          </div>
+
+          <div class="card-body">
+            <div class="card-deck">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title"><i class="fa fa-phone fa-fw text-bishide mr-1"></i>手机号码
+                    <span class="pull-right"><i class="fa fa-check fa-fw text-bishide mr-1 text-success"></i>已设置</span>
+                  </h6>
+                  <p class="card-text"><?php echo $info['tel'];?></p>
+                  <a href="#" data-toggle="modal" data-target="#bishideModal_changepw" class="btn btn-secondary">
+                    修改手机号
+                  </a>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title"><i class="fa fa-envelope-o fa-fw text-bishide mr-1"></i>邮箱
+                    <empty name="mail">
+                      <span class="pull-right"><i class="fa fa-close fa-fw text-bishide mr-1 text-danger"></i>未设置</span></h6><p class="card-text">请绑定邮箱!</p>
+                   <a class="btn btn-secondary" data-toggle="modal" data-target="#bishideModal_email">绑定邮箱</a>
+                      <else/>
+                      <span class="pull-right"><i class="fa fa-check fa-fw text-bishide mr-1 text-success"></i>已设置</span>
+                  </h6> <p class="card-text"><?php echo $mail;?></p>
+                  <a class="btn btn-secondary" data-toggle="modal" data-target="#bishideModal_email">修改邮箱</a>
+                    </empty>
+
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title"><i class="fa fa-key fa-fw text-bishide mr-1"></i>提现密码
+                    <empty name="payword">
+                    <span class="pull-right"><i class="fa fa-close fa-fw text-bishide mr-1 text-danger"></i>未设置</span>
+                    </h6><p class="card-text">请设置提现密码!</p>
+                  <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#bishideModal_paypassword">设置提现密码</a>
+                    <else/>
+                    <span class="pull-right"><i class="fa fa-check fa-fw text-bishide mr-1 text-success"></i>已设置</span>
+                     </h6> <p class="card-text">&nbsp;</p>
+                  <a href="#" class="btn btn-secondary" data-toggle="modal" data-target="#bishideModal_paypassword">更改提现密码</a>
+                    </empty>
+
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Example DataTables Card-->
+    </div>
+    <include file="Public:footer"/>
+    <!--#include file="include/footer.html"-->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+
+    <div class="modal fade" id="bishideModal_paypassword" tabindex="-1" role="dialog" aria-labelledby="bishideModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">设置您的转账密码</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card card-paypassword mx-auto">
+              <div class="card-body">
+                <form id="form1" name="form1">
+                  <div class="form-group">
+                    <input class="form-control" id="tel" name="tel" type="text" aria-describedby="emailHelp" placeholder="输入注册手机号">
+                  </div>
+                  <div class="input-group mb-3">
+
+                    <input type="tel" maxlength="6" class="form-control" name="telcode" placeholder="输入验证码" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <input type="button" class="btn-danger" value="获取验证码" id="sendcode" onclick="settime(this)">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" name="payword" type="password" aria-describedby="emailHelp" placeholder="输入转账密码 (6-8位英文数字组成)">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" name="payword2" type="password" aria-describedby="emailHelp" placeholder="确认转账密码 (6-8位英文数字组成)">
+                  </div>
+                  <!--<a class="btn btn-danger btn-block" href="#">设置转账密码</a>-->
+                  <input type="submit" class="btn btn-danger btn-block" value="设置转账密码">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="bishideModal_email" tabindex="-1" role="dialog" aria-labelledby="bishideModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">绑定您的邮箱地址</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card card-paypassword mx-auto">
+              <div class="card-body">
+                <form id="form2" name="form2">
+                  <div class="form-group">
+                    <input id="email" class="form-control" name="mail" type="text" aria-describedby="emailHelp" placeholder="输入邮箱地址">
+                    <small class="form-text text-bishide text-muted">
+                    注意：如未收到邮箱验证码，可以尝试在邮箱回收站查收！
+                    </small>
+                  </div>
+                  <div class="input-group mb-3">
+
+                    <input type="tel" maxlength="6" class="form-control" name="emailcode" placeholder="输入验证码" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <input type="button" class="btn-danger" id="sendcode2" value="获取验证码" onclick="settime(this)">
+                    </div>
+                  </div>
+
+                  <!--<a class="btn btn-danger btn-block" href="#">设置邮箱地址</a>-->
+                  <input type="submit" class="btn btn-danger btn-block" value="设置邮箱地址">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- 验证手机号 -->
+    <div class="modal fade" id="bishideModal_changepw" tabindex="-1" role="dialog" aria-labelledby="bishideModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bishideModalLabel">修改手机号>验证当前手机号</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card card-paypassword mx-auto">
+              <div class="card-body">
+                <form name="form3" id="form3">
+                  <label>
+                    当前手机号
+                  </label>
+                  <div class="input-group mb-3" id="tel3"><?php echo $info['tel'];?></div>
+                  <label>
+                    短信验证
+                  </label>
+                  <div class="input-group mb-3">
+                    <input type="tel" maxlength="6" class="form-control" placeholder="输入验证码" name="telcode3" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <input type="button" class="btn-danger" value="获取验证码" id="sendcode3" onclick="settime(this)">
+                    </div>
+                  </div>
+                  <input type="submit" class="btn btn-danger btn-block" data-toggle="modal"   value="下一步">
+                  <!--<a >下一步</a>-->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 修改手机号 -->
+    <div class="modal fade" id="bishideModal_newpw" tabindex="-1" role="dialog" aria-labelledby="bishideModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="">修改手机号>设置新手机号</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card card-paypassword mx-auto">
+              <div class="card-body">
+                <form id="form4" name="form4">
+                  <label>
+                    设置新手机号
+                  </label>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="tel4" name="tel4" placeholder="输入新手机号">
+                  </div>
+                  <label>
+                    短信验证
+                  </label>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="telcode4" placeholder="输入验证码">
+                    <div class="input-group-append">
+                      <input type="button" class="btn-danger" id="sendcode4" value="获取验证码" onclick="settime(this)">
+                    </div>
+                  </div>
+                  <input type="submit" class="btn btn-danger btn-block" value="确认修改">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script"/>
+</html>
+<script>
+    $('#form1').submit(function(){
+        $(this).ajaxSubmit({
+            url:"{:U('setpay')}",
+            type:'post',
+            dataType:'json',
+            success:function(msg){
+                if(msg.status==1){
+                    //表示提交注册成功
+                    window.location.href = "{:U('Security/index')}";
+                }else{
+                    layer.msg(msg.msg);
+                }
+            }
+        });
+        //阻止当前的表单默认的提交
+        return false;
+    });
+
+    $('#form2').submit(function(){
+        $(this).ajaxSubmit({
+            url:"{:U('setmail')}",
+            type:'post',
+            dataType:'json',
+            success:function(msg){
+                if(msg.status==1){
+                    //表示提交注册成功
+                    window.location.href = "{:U('Security/index')}";
+                }else{
+                    layer.msg(msg.msg);
+                }
+            }
+        });
+        //阻止当前的表单默认的提交
+        return false;
+    });
+
+    //修改手机号第一步
+    $('#form3').submit(function(){
+        $(this).ajaxSubmit({
+            url:"{:U('editTel')}",
+            type:'post',
+            dataType:'json',
+            success:function(msg){
+                if(msg.status==1){
+                    //表示提交注册成功
+                        $("#bishideModal_changepw").hide();
+                        $(".modal-backdrop").remove();
+                        $("#bishideModal_newpw").modal("show");
+                }else{
+                    layer.msg(msg.msg);
+                }
+            }
+        });
+        //阻止当前的表单默认的提交
+        return false;
+    });
+    //修改手机第二步
+    $('#form4').submit(function(){
+        $(this).ajaxSubmit({
+            url:"{:U('editTel2')}",
+            type:'post',
+            dataType:'json',
+            success:function(msg){
+                if(msg.status==1){
+                    //表示提交注册成功
+                    window.location.href = "{:U('User/login')}";
+                }else{
+                    layer.msg(msg.msg);
+                }
+            }
+        });
+        //阻止当前的表单默认的提交
+        return false;
+    });
+    //实现用户点击按钮发送验证
+    $('#sendcode2').click(function(){
+        //获取当前用户的输入的手机号
+        var email = $('#email').val();
+        $.ajax({
+            url:"{:U('Email/sendemail')}",
+            data:{email:email},
+            type:'post',
+            success:function(msg){
+                if(msg.status==0){
+                    layer.msg(msg.msg);
+                }else if(msg.status ==1){
+                    layer.msg('发送成功');
+                }
+            }
+        });
+    });
+
+
+
+    $('#sendcode').click(function(){
+        //获取当前用户的输入的手机号
+        var tel = $('#tel').val();
+        $.ajax({
+            url:"{:U('sendcode')}",
+            data:{tel:tel},
+            type:'post',
+            success:function(msg){
+                if(msg.status==0){
+                    layer.msg(msg.msg);
+                }else{
+                    layer.msg('发送成功');
+                }
+            }
+        });
+    });
+
+    //更改手机号第一步
+    $('#sendcode3').click(function(){
+        //获取当前用户的输入的手机号
+        var tel = $('#tel3').text();
+        $.ajax({
+            url:"{:U('sendcode')}",
+            data:{tel:tel},
+            type:'post',
+            success:function(msg){
+                if(msg.status==0){
+                    layer.msg(msg.msg);
+                }else{
+                    layer.msg('发送成功');
+                }
+            }
+        });
+    });
+    //更改手机号第二步
+    $('#sendcode4').click(function(){
+        //获取当前用户的输入的手机号
+        var tel = $('#tel4').val();
+        $.ajax({
+            url:"{:U('sendcode2')}",
+            data:{tel:tel},
+            type:'post',
+            success:function(msg){
+                if(msg.status==0){
+                    layer.msg(msg.msg);
+                }else{
+                    layer.msg('发送成功');
+                }
+            }
+        });
+    });
+</script>

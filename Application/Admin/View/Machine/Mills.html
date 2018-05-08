@@ -1,0 +1,102 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head"/>
+<title>订单详情-币势得</title>
+
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav"/>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Order/index')}">币势得管理中心</a>
+        </li>
+        <li class="breadcrumb-item active">订单详情</li>
+      </ol>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+          <div class="card-header text-bishide text-center">
+        <h4><i class="fa fa-table fa-fw"></i>矿机详情列表</h4></div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>矿机编号</th>
+                  <th>运行状态</th>
+                  <th>矿机算力</th>
+                  <th>使用用户</th>
+                  <th>订单编号</th>
+                  <th>操作</th>
+                  <!--<th>操作</th>-->
+                </tr>
+              </thead>
+              <tbody>
+              <volist name="data" id="vo">
+                <tr>
+                  <td>{$vo.num}</td>
+                  <td>{$vo.status}</td>
+                  <td>{$vo.power} MH/s</td>
+                  <td>{$vo.username}</td>
+                  <td>{$vo.orderid}</td>
+                  <th> 
+                    <!--<a type="button" class="badge badge-pill badge-primary" href="javascript:if(confirm('确实要清除矿机信息吗?'))location='{:U('Machine/delete',array('id'=>$vo['id']))}'">清除</a>-->
+                  </th>
+                  <!--<td>-->
+                    <!--<a type="button" class="btn btn-danger">-->
+                        <!--设置-->
+                    <!--</a>-->
+                  <!--</td>-->
+                </tr>
+              </volist>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">数据最近更新于<?php echo date("Y-m-d H:i:s")?></div>
+      </div>
+    </div>
+
+    <!--#include file="include/footer.html"-->
+    <include file="Public:footer"/>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+  </div>
+
+  <div class="modal fade" id="bishideModal_address" tabindex="-1" role="dialog" aria-labelledby="bishideModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bishideModalLabel">绑定您的钱包地址</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="card card-paypassword mx-auto">
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <input class="form-control" id="exampleInputEmail1" type="text" aria-describedby="emailHelp" placeholder="输入钱包地址">
+                </div>
+                <a class="btn btn-danger btn-block" href="#">绑定</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script"/>
+</html>

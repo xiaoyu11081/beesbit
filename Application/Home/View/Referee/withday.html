@@ -1,0 +1,131 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head" />
+<title>收益提现-币势得</title>
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav" />
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Personal/index')}">个人中心</a>
+        </li>
+        <li class="breadcrumb-item active">推荐收益提现</li>
+      </ol>
+
+      <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-plus-square"></i>
+          推荐收益提现
+          <!-- <i class="fa fa-cog fa-fw pull-right"></i> -->
+        </div>
+
+        <!-- <div class="card-body"> -->
+
+          <!-- <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#bth-coin" role="tab" aria-controls="bth-coin" aria-selected="true">BTH</a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">暂未开放</a>
+              <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">敬请期待</a>
+            </div>
+          </nav> -->
+        <form action="">
+          <div class="tab-content card-body col-lg-4 col-md-6 offset-lg-4 offset-md-3">
+            <div class="tab-pane fade show active" id="bth-coin" role="tabpanel" aria-labelledby="nav-home-tab" style="margin-left:0">
+                  <label>提现钱包地址</label>
+              <div class="input-group mb-1">
+                <input class="form-control" type='text' name="wal" id="wal" placeholder="输入钱包地址">
+              </div>
+                          <label>提现额度</label>
+              <div class="input-group mb-1">
+                <input class="form-control" type="text" name="credit" placeholder="输入提现额度" autocomplete="off">
+                <div class="input-group-append">
+                  <span class="input-group-text">余额</span>
+                  <span class="input-group-text" id="payout"><?php echo $sum_e;?></span>
+                </div>
+              </div>
+                <input style="display:none">
+                          <label>提现密码</label>
+              <div class="input-group">
+                <input class="form-control" name="payword" placeholder="输入提现密码" onfocus="this.type='password'" autocomplete="off">
+              </div>
+            <small class="text-bishide">注意：</b>1. 提现申请成功后的24小时内到账，且24小时内只可提现一次</small>
+            <br>
+            <small class="text-bishide">&emsp;&emsp;&emsp;2. 提现：余额不足为1的部分只能提取到小数点后四位</small>
+            <br>
+            <small class="text-bishide">&emsp;&emsp;&emsp;3. 手续费：提现将收取手续费(手续费: 为提现总额的0.3%)</small>
+              <div class="input-group mt-3">
+                <input class="btn btn-danger btn-block" type="submit" value="提现">
+              </div>
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">BTC</div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">BTC</div>
+          </div>
+        </form>
+        <!-- </div> -->
+      </div>
+    </div>
+
+    <!--#include file="include/footer.html"-->
+    <include file="Public:footer" />
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+  </div>
+
+  <!-- Modal -->
+  <!-- <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">币势得-算力协议</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          请仔细阅读完算力协议
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">我看完了</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script" />
+</html>
+<script>
+    $('form').submit(function(){
+    var wal = $('wal').val()
+        $(this).ajaxSubmit({
+            url:"{:U('Referee/withday')}",
+            type:'post',
+            data:{wal:wal},
+            dataType:'json',
+            success:function(msg){
+                if(msg.status==1){
+                    //表示提交注册成功
+                    alert(msg.msg)
+                    window.location.href = "{:U('Account/index')}";
+                }else if(msg.status==3){
+                    alert(msg.msg)
+                    window.location.href = "{:U('Personal/index')}";
+                }else{
+                    layer.msg(msg.msg);
+                }
+            }
+        });
+        //阻止当前的表单默认的提交
+        return false;
+    });
+</script>

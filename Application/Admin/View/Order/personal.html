@@ -1,0 +1,112 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head"/>
+<title>用户支付订单-币势得</title>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav"/>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">币势得管理中心</a>
+        </li>
+        <li class="breadcrumb-item active">基本信息</li>
+      </ol>
+
+      <div class="card-deck">
+        <div class="card mb-3">
+          <div class="card-header text-bishide text-center">
+            <h4><i class="fa fa-table fa-fw"></i>用户已支付订单列表<a href="{:U('excel')}" class="btn btn-danger pull-right">
+           导出表格
+          </a></h4></div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>订单编号</th>
+                    <th>订单种类</th>
+                    <th>订单用户</th>
+                    <th>订单金额</th>
+                    <th>支付回执号</th>
+                    <th>支付状态</th>
+                    <th>后台确认</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <volist name="data" id="vo">
+
+                  <tr>
+                    <td>{$vo.orderid}</td>
+                    <td>
+                      <eq name='vo.retype' value='2'> <span class="badge badge-pill badge-info">续费订单</span><else/>
+                        <span class="badge badge-pill badge-success">全新订单</span></eq>
+                    </td>
+                    <td>{$vo.username}</td>
+                    <td>{$vo.price}</td>
+                    <td>{$vo.paycode}</td>
+                    <td>
+                     <eq name='vo.status' value='3'>
+                        <span class="badge badge-pill badge-secondary">已取消</span>
+                      </eq>
+                      <eq name='vo.status' value='2'> <span class="badge badge-pill badge-success">已支付</span>
+                      </eq>
+                      <eq name='vo.status' value='1'>
+                      <span class="badge badge-pill badge-warning">未支付</span>
+                      </eq>
+                    </td>
+                    <td>
+                       <eq name='vo.cwcode' value='2'> <span class="badge badge-pill badge-success">出纳已确认</span><else/><span class="badge badge-pill badge-warning">出纳未确认</span></eq>
+                      <eq name='vo.code' value='2'> <span class="badge badge-pill badge-success">会计已确认</span><else/><span class="badge badge-pill badge-warning">会计未确认</span></eq>
+                    </td>
+                    
+                    <td>
+                       <eq name='vo.status' value='2'>
+                        <eq name='vo.cwcode' value='2'>
+                          <eq name="vo.code" value="1">
+                            <a  type="button" class="badge badge-pill badge-primary"  href="{:U('Order/edit',array('id'=>$vo['id']))}">会计确认</a>
+                            <else/>
+                            <!--<a  type="button" class="badge badge-pill badge-danger"  href="{:U('Order/cancel',array('id'=>$vo['id']))}">取消确认</a>-->
+                          </eq>
+                          <else/>
+                          <a  type="button" class="badge badge-pill badge-primary"  href="{:U('Order/cwedit',array('id'=>$vo['id']))}">出纳确认</a>
+                        </eq>
+
+                     
+                        <eq name='vo.retype' value='2'>
+                          <eq name='vo.code' value='2'>
+                            <!--<a  type="button" class="badge badge-pill badge-secondary"  href="{:U('Order/edit1',array('fid'=>$vo['fid'],'id'=>$vo['id']))}">删除续费</a>-->
+                          </eq>
+                        </eq>
+                      </eq>
+                      <!--<a  type="button" class="badge badge-pill badge-secondary" href="javascript:if(confirm('确实要删除该订单吗?'))location='{:U('Order/delete',array('id'=>$vo['id']))}'" >删除订单</a>-->
+                    </td>
+                  </tr>
+                </volist>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">数据最近更新于<?php echo date("Y-m-d H:i:s")?></div>
+        </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Example DataTables Card-->
+  </div>
+
+  <!--#include file="include/footer.html"-->
+  <include file="Public:footer"/>
+  <!-- Scroll to Top Button-->
+</body>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script"/>
+</html>

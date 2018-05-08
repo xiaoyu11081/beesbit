@@ -1,0 +1,243 @@
+/* id */
+
+/* normal */
+
+a {
+  color: #cc131c
+}
+
+.text-bishide {
+  color: #cc131c
+}
+
+@media (min-width:992px) {
+
+
+  .fixed-top {
+    padding: 5px 10px 20px 0;
+    border-bottom: 2px solid #cc131c;
+    z-index: 999;
+  }
+
+  #mainNav .navbar-brand {
+    margin-left: 1rem;
+    margin-right: 0;
+    color: #cc131c;
+    width: 130px;
+    height: 50px;
+  }
+
+
+}
+
+@media (max-width:768px) {
+  .fixed-top {
+    border-bottom: 2px solid #cc131c;
+    z-index: 999;
+  }
+}
+
+@media (min-width: 992px) {
+  #mainNav.navbar-dark .navbar-collapse .navbar-sidenav {
+    background: #fff;
+  }
+}
+
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item>.nav-link:hover>.nav-link-collapse:after {
+  color: #fff;
+}
+
+.breadcrumb {
+  margin-top: 1.5rem;
+  background: rgba(0, 0, 0, .03);
+}
+
+.bg-danger {
+  background-color: #cc131c !important;
+  color: #fff
+}
+
+.navbar-dark .navbar-toggler {
+  color: rgba(0, 0, 0, .5);
+}
+
+.page-link {
+  color: #cc131c
+}
+
+.page-link:hover {
+  color: #ff2b35
+}
+
+.page-item.active .page-link {
+  background-color: #cc131c;
+  border-color: #cc131c;
+
+}
+
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item>.nav-link {
+  color: #212121;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #212121;
+}
+
+#mainNav.navbar-dark .navbar-collapse .navbar-nav>.nav-item.dropdown>.nav-link:after {
+  color: #212121;
+}
+
+body>.bg-dark {
+  background-color: #fff !important;
+}
+
+
+/* icon-fonts */
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+
+
+.logo {
+  position: relative;
+  bottom: 8px;
+}
+
+.icon-gengduo {
+  width: 40px;
+  height: 40px;
+}
+
+.icon-logo {
+  width: 200px;
+  height: 50px;
+}
+
+@media (max-width:768px) {
+
+  .icon-logo {
+    display: inline-block;
+    position: relative;
+    width: 140px;
+    height: 55px;
+  }
+
+}
+
+/* icon-fonts */
+
+/* hover */
+
+.hvr-underline-from-left {
+  transition-duration: 0.8s !important;
+}
+
+.navbar-nav .hvr-underline-from-left:before {
+  background: #cc131c;
+  height: 2px;
+}
+
+.hvr-underline-from-left:active,
+.hvr-underline-from-left:focus,
+.hvr-underline-from-left:hover {
+  transition-duration: .5s !important;
+
+}
+
+.hvr-underline-from-center:before {
+  background: #cc131c;
+  transition: 0.2s
+}
+
+#mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item>.nav-link:hover {
+  color: #212121
+}
+
+@media (min-width: 992px) {
+  #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level,
+  #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level {
+    background-color: #f0f0f0;
+  }
+}
+
+.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: #cc131c
+}
+
+.btn-danger {
+  background: #cc131c
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color: #ff2b35;
+  border-color: #ff2b35;
+}
+
+.btn-warning:hover {
+  color: #212529;
+  background-color: #ffd65c;
+  border-color: #ffd65c;
+}
+
+.form-control:focus {
+  border-color: #ff2b35;
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, 0.25)
+}
+
+.vs-banner {
+  padding: 4em;
+}
+
+.vs-banner::before {
+  background: linear-gradient(45deg, #bb000a 50%, #ff0000 100%);
+  background: -webkit-linear-gradient(45deg, #bb000a 50%, #ff0000 100%);
+  background: -o-linear-gradient(45deg, #bb000a 50%, #ff0000 100%);
+  background: -moz-linear-gradient(45deg, #bb000a 50%, #ff0000 100%);
+  content: "";
+  display: block;
+  height: 25em;
+  left: -54%;
+  position: absolute;
+  top: 10em;
+  transform: skewX(-30deg);
+  width: 100%;
+  z-index: 9;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.vs-banner::after {
+  background:linear-gradient(45deg, #ffeaea 30%, #ff0000 100%);
+  background:-webkit-linear-gradient(45deg, #ffeaea 30%, #ff0000 100%);
+  background:-o-linear-gradient(45deg, #ffeaea 30%, #ff0000 100%);
+  background:-moz-linear-gradient(45deg, #ffeaea 30%, #ff0000 100%);
+  content: "";
+  display: block;
+  height: 25em;
+  right: -50%;
+  position: absolute;
+  top: 10em;
+  transform: skewX(-30deg);
+  width: 100%;
+  z-index: 9;
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.08);
+
+}
+
+@media (max-width:768px) {
+
+  .vs-banner::before {
+    top: 228px;
+    height: 41em
+  }
+  .vs-banner::after {
+    top: 228px;
+    height: 41em
+  }
+}

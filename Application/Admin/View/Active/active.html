@@ -1,0 +1,165 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head"/>
+<title>提现记录-币势得</title>
+
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav"/>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Order/index')}">币势得管理中心</a>
+        </li>
+        <li class="breadcrumb-item active">奖励提现申请</li>
+      </ol>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header text-bishide text-center">
+          <h4><i class="fa fa-table fa-fw"></i>奖励提现申请列表 <a href="{:U('excel')}" class="btn btn-danger pull-right">
+           导出表格
+          </a></h4></div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>提现用户</th>
+                  <th>提现币种</th>
+                  <th>提现地址</th>
+                  <th>提现金额</th>
+                  <th>提现后余额</th>
+                  <th>提现时间</th>
+                  <th>提现状态</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              <volist name="data" id="vo">
+                <tr>
+                  <td>{$vo.username}</td>
+                  <td>{$vo.coin}</td>
+                  <td>{$vo.address}</td>
+                  <td>{$vo.num}</td>
+                  <th>{$vo.surplus}</th>
+                  <td><?php echo date("Y-m-d H:i:s",$vo['time']);?></td>
+                  <td>
+                    <eq name='vo.status' value='3'>
+                      <span class="badge badge-pill badge-warning">已取消订单</span>
+                    <else/>
+                      <eq name='vo.status' value='2'>
+                        <span class="badge badge-pill badge-success">出纳已确认</span>
+                        <else/>
+                        <span class="badge badge-pill badge-warning">出纳未确认</span>
+                      </eq>
+                      <eq name='vo.cwcode' value='2'>
+                        <span class="badge badge-pill badge-success">会计已确认</span>
+                        <else/>
+                        <span class="badge badge-pill badge-warning">会计未确认</span>
+                      </eq>
+                    </eq>
+
+                  </td>
+                  <td>
+                    <eq name='vo.status' value='3'>
+
+                      <else/>
+
+                      <eq name='vo.cwcode' value='2'>
+                        <eq name="vo.status" value="1">
+                          <a  type="button" class="badge badge-pill badge-primary"  href="{:U('Active/edit',array('id'=>$vo['id']))}">出纳确认</a>
+                          <button  value="{$vo.id}"  type="button" class="badge badge-pill badge-primary yc-btn text-light" data-toggle="modal" data-target="#adddata">
+                            取消
+                          </button>
+                        </eq>
+                        <else/>
+                        <a type="button" class="badge badge-pill badge-primary"  href="{:U('Active/cwedit',array('id'=>$vo['id']))}">会计确认</a>
+                        <button  value="{$vo.id}"  type="button" class="badge badge-pill badge-primary yc-btn text-light" data-toggle="modal" data-target="#adddata">
+                          取消
+                        </button>
+                      </eq>
+
+                    </eq>
+
+                  </td>
+                </tr>
+
+
+</volist>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">数据最近更新于 <?php echo date("Y-m-d H:i:s")?></div>
+      </div>
+    </div>
+
+    <!--#include file="include/footer.html"-->
+    <include file="Public:footer"/>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+  </div>
+</body>
+
+<form method="post" action="{:U('Active/cancel')}">
+  <div class="modal fade" id="adddata" tabindex="-1" role="dialog" aria-labelledby="bishideModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="bishideModalLabel">提现订单取消</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+        <input  id="accountid" name="accountid" type="hidden" value="">
+
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <font style="vertical-align: inherit;">取消原因</font>
+                </span>
+              </div>
+              <input name="contents" class="form-control" type="text" placeholder="输入信息" required>
+            </div>
+          </div>
+
+
+
+          <div class="from-group">
+            <input  type="submit" value="提交" class="btn btn-danger btn-block" type="button">
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+
+<!--#include file="include/script.html"-->
+<include file="Public:script"/>
+</html>
+
+<script>
+
+    $(function () {
+        $(".yc-btn").click(function () {
+            var accountid=$(this).val();
+
+            $("#accountid").val(accountid);
+        })
+    })
+</script>

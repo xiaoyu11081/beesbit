@@ -1,0 +1,146 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head"/>
+<title>客服信息管理-币势得</title>
+
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav"/>
+  <div class="content-wrapper">
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Order/index')}">币势得管理中心</a>
+        </li>
+        <li class="breadcrumb-item active">客服信息管理</li>
+      </ol>
+      <!-- Example DataTables Card-->
+      <div class="card mb-3">
+        <div class="card-header text-bishide text-center">
+          <h4><i class="fa fa-table fa-fw"></i>客服信息管理 <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#adddata">
+            增加
+          </button></h4></div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                  <th>客服ID</th>
+                  <th>客服名称</th>
+                  <th>客服电话</th>
+                  <th>客服QQ</th>
+                  <th>客服邮件</th>
+                  <th>客服等级</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <volist name="data" id="vo">
+                <tr>
+                  <td>{$vo.id}</td>
+                  <td>{$vo.name}</td>
+                  <td>{$vo.tel}</td>
+                  <td>{$vo.qq}</td>
+                  <td>{$vo.mail}</td>
+                  <td>
+                    <eq name='vo.vip' value='1'>
+                      <span class="badge badge-pill badge-success">一级客服</span>
+                      <else/>
+                      <span class="badge badge-pill badge-success">二级客服</span>
+                    </eq>
+                  </td>
+                  <td>
+                    <a href="{:U('Customer/delete',array('id'=>$vo['id']))}" type="button" class="badge badge-pill badge-primary">
+                      删除
+                    </a>
+                  </td>
+                </tr>
+                </volist>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">数据最近更新于 <?php echo date("Y-m-d H:i:s")?></div>
+      </div>
+    </div>
+
+    <!--#include file="include/footer.html"-->
+    <include file="Public:footer"/>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+  </div>
+</body>
+
+<form method="post" action="{:U('Customer/add')}">
+<div class="modal fade" id="adddata" tabindex="-1" role="dialog" aria-labelledby="bishideModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="bishideModalLabel">增加一名客服信息</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <font style="vertical-align: inherit;">姓名</font>
+                </span>
+              </div>
+              <input name="name" class="form-control" type="text" placeholder="输入信息">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <font style="vertical-align: inherit;">电话</font>
+                </span>
+              </div>
+              <input name="tel" class="form-control" type="text" placeholder="输入信息">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <font style="vertical-align: inherit;">QQ</font>
+                </span>
+              </div>
+              <input name="qq" class="form-control" type="text" placeholder="输入信息">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <font style="vertical-align: inherit;">mail</font>
+                </span>
+              </div>
+              <input name="mail" class="form-control" type="text" placeholder="输入信息">
+            </div>
+          </div>
+          <div class="from-group">
+            <input  type="submit" value="确认" class="btn btn-danger btn-block" type="button">
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+</form>
+
+<!--#include file="include/script.html"-->
+<include file="Public:script"/>
+</html>

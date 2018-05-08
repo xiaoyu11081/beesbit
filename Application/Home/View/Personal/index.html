@@ -1,0 +1,507 @@
+<!--#include file="include/head.html"-->
+<include file="Public:head" />
+<title>基本信息-币势得</title>
+</head>
+
+<body class="fixed-nav sticky-footer" id="page-top">
+  <!-- Navigation-->
+  <!--#include file="include/nav.html"-->
+  <include file="Public:nav" />
+  <div class="content-wrapper">
+    <div class="container-fluid">
+            <eq name='set_status' value='2'>
+                <div class="alert alert-warning alert-dismissible fade show alert-guide" role="alert">
+                  <strong>尊敬的用户您好!</strong>您的账户目前存在安全风险，需设置
+                  <a href="{:U('Security/index')}" class="text-primary text-weight">提现密码</a> ,
+                  请立即前往设置！
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </eq>
+            <eq name='set_status' value='3'>
+                <div class="alert alert-warning alert-dismissible fade show alert-guide" role="alert">
+                  <strong>尊敬的用户您好!</strong>您的账户目前存在安全风险，需设置
+                  <a href="{:U('Security/index')}" class="text-primary text-weight">安全邮箱</a> ,
+                  请立即前往设置！
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </eq>
+            <eq name='set_status' value='4'>
+                <div class="alert alert-warning alert-dismissible fade show alert-guide" role="alert">
+                  <strong>尊敬的用户您好!</strong>您的账户目前存在安全风险，需设置
+                  <a href="{:U('Security/index')}" class="text-primary text-weight">安全邮箱</a> ,
+                  <a href="{:U('Security/index')}" class="text-primary text-weight">提现密码</a> ,
+                  请立即前往设置！
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </eq>
+            <eq name='set_status' value='5'>
+                <div class="alert alert-warning alert-dismissible fade show alert-guide" role="alert">
+                  <strong>尊敬的用户您好!</strong>您的账户目前存在安全风险，需设置
+                  <a href="Withdraw-money.html" class="text-primary text-weight" data-toggle="modal" data-target="#bishideModal_address">钱包地址</a> ,
+                  请立即前往设置！
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </eq>
+              <eq name='set_status' value='6'>
+                <div class="alert alert-warning alert-dismissible fade show alert-guide" role="alert">
+                  <strong>尊敬的用户您好!</strong>您的账户目前存在安全风险，需设置
+                  <a href="{:U('Security/index')}" class="text-primary text-weight">提现密码</a> ,
+                  <a href="Withdraw-money.html" class="text-primary text-weight" data-toggle="modal" data-target="#bishideModal_address">钱包地址</a> ,
+                  请立即前往设置！
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </eq>
+            <eq name='set_status' value='7'>
+                <div class="alert alert-warning alert-dismissible fade show alert-guide" role="alert">
+                  <strong>尊敬的用户您好!</strong>您的账户目前存在安全风险，需设置
+                  <a href="{:U('Security/index')}" class="text-primary text-weight">安全邮箱</a> ,
+                  <a href="Withdraw-money.html" class="text-primary text-weight" data-toggle="modal" data-target="#bishideModal_address">钱包地址</a> ,
+                  请立即前往设置！
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </eq>
+            <eq name='set_status' value='8'>
+                <div class="alert alert-warning alert-dismissible fade show alert-guide" role="alert">
+                  <strong>尊敬的用户您好!</strong>您的账户目前存在安全风险，需设置
+                  <a href="{:U('Security/index')}" class="text-primary text-weight">安全邮箱</a> ,
+                  <a href="{:U('Security/index')}" class="text-primary text-weight">提现密码</a> ,
+                  <a href="Withdraw-money.html" class="text-primary text-weight" data-toggle="modal" data-target="#bishideModal_address">钱包地址</a> ,
+                  请立即前往设置！
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            </eq>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{:U('Personal/index')}">个人中心</a>
+        </li>
+        <li class="breadcrumb-item active">基本信息</li>
+      </ol>
+
+      <div class="row mb-3">
+        <div class="col-md-8">
+          <div class="card">
+          <div class="card-header">
+            <i class="fa fa-bitcoin fa-fw"></i>收益概况</div>
+          <div class="list-group">
+            <div class="list-group-item pt-3">
+              <div class="col-md-6 pull-left media mb-2">
+                <svg class="icon icon-h" aria-hidden="true">
+                  <use xlink:href="#icon-h"></use>
+                </svg>
+                <div class="media-body">
+                  <h6> 昨日收益</h6>
+                  <div class="text-bishide ">
+                    <strong><?php echo $shouyi;?> ETH</strong>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 pull-right media mb-2">
+                <svg class="icon icon-h" aria-hidden="true">
+                  <use xlink:href="#icon-all"></use>
+                </svg>
+                <div class="media-body">
+                  <h6>总收益<span class="pull-right badge-pill badge badge-light text-muted" data-toggle="tooltip" data-placement="bottom" title="当前：ETH总收益约等于<?php echo $ethusd_all;?> 美元">1ETH ≈ $ <?php echo $ethusd;?></span></h6>
+
+                  <div class="text-bishide ">
+                    <strong><?php echo $wallet['num'];?> ETH</strong>
+                     <if condition="$address != null ">
+                      <a href="{:U('Account/withday')}?wal=<?php echo $wallet['address'];?>" class="badge badge-pill badge-success ml-1 pull-right">提现</a>
+                      <else/>
+                      <a href="Withdraw-money.html" class="badge badge-pill badge-danger ml-1 pull-right" data-toggle="modal" data-target="#bishideModal_address" data-toggle="tooltip" data-placement="top" title="绑定钱包地址即可提现收益">绑定钱包提现</a>
+                    </if>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="list-group-item pt-3">
+              <div class="col-md-6 pull-left media mb-2">
+                <svg class="icon icon-h" aria-hidden="true">
+                  <use xlink:href="#icon-pay"></use>
+                </svg>
+                <div class="media-body">
+                  <h6>已提现金额
+                  </h6>
+                  <div class="text-bishide ">
+                    <strong><?php echo $wallet['payout'];?> ETH</strong>
+                  </div>
+
+                </div>
+              </div>
+              <div class="col-md-6 pull-right media mb-2">
+                <svg class="icon icon-h" aria-hidden="true">
+                  <use xlink:href="#icon-yue"></use>
+                </svg>
+                <div class="media-body">
+                  <h6>未提现金额</h6>
+                  <div class="text-bishide ">
+                    <strong><?php echo $wallet['num']-$wallet['payout'];?> ETH</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-10">
+          <div class="card">
+           <div class="card-header">
+            <span class="collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+              <i class="fa fa-credit-card"></i>
+              钱包地址与提现
+            </span>
+
+
+          </div>
+          <ul class="list-group">
+            <li class="list-group-item disabled">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <font style="vertical-align: inherit;">
+                      <font style="vertical-align: inherit;">ETH钱包地址</font>
+                    </font>
+                  </span>
+                </div>
+                <input type="text" class="form-control" aria-label="Text input with segmented dropdown button" placeholder="<?php echo $wallet['address'];?>" readonly="readonly">
+                <div class="input-group-append">
+                  <button type="button" class="btn btn-danger mr-1" data-toggle="modal" data-target="#bishideModal_address">
+                      修改
+                  </button>
+                  <if condition="$address != null ">
+                    <button type="button" class="btn btn-danger" data-toggle="modal">
+                          <a href="{:U('Account/withday')}?wal=<?php echo $wallet['address'];?>" style="color:#fff">提现</a>
+                    </button>
+
+                  </if>
+                </div>
+              </div>
+            </li>
+            <li class="list-group-item">
+              <span class="text-bishide" data-placement="right" data-toggle="tooltip" title="普通提现必须满足至少0.1提取；算力租赁期满后，计算到小数点后四位的虚拟货币允许全部提现。每笔提现收取0.001的提现矿工转账费，非百分比收取，即提现1枚ETH收取0.001ETH，提现100枚ETH同样收取0.001ETH。提现可能需要24小时的到账时间，若24小时没有到账，请联系我们的工作人员。提现前，请务必确认您的提现地址正确，一旦提现地址错误，虚拟货币将无法找回。"><i class="fa fa-fw mr-2 fa-exclamation-triangle text-warning"></i>提现说明</span>
+                  <a class="text-bishide pull-right" href="http://baijiahao.baidu.com/s?id=1593334868404805446&wfr=spider&for=pc&qq-pf-to=pcqq.discussion" target="_blank">
+                    <i class="fa fa-chain fa-fw mr-1"></i>申请钱包地址</a>
+              </li>
+          </ul>
+		</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card mb-3">
+            <div class="card-header">
+              <span>
+                <i class="fa fa-diamond"></i>
+                我的算力套餐
+              </span>
+            </div>
+   <empty name="order">
+            <div class="card-body text-center">
+              <svg class="icon icon-dingdan" aria-hidden="true">
+                <use xlink:href="#icon-ziyuan6"></use>
+              </svg>
+              <div class="card-text">
+                <p class="text-muted">您没有已购买的算力套餐</p>
+                <h4 class="text-bishide"><p>所有矿机已部署完毕 购买算力 立即获取收益！</p></h4>
+              </div>
+              <div class="card-text">
+                <button type="button" class="btn btn-danger" style="width:12.8rem">
+                  <a href="payment.html" class="text-white">立即部署算力</a>
+                </button>
+              </div>
+            </div>
+<else/>
+          <volist name="order" id="or">
+            <div class="card-body">
+              <div class="col-xl-12 col-sm-12 mb-3">
+                <div class="card text-white bg-danger o-hidden h-100">
+                  <div class="card-header">
+                    ETH算力套餐
+                  </div>
+                  <div class="card-body">
+                    <div class="card-body-icon">
+
+                    </div>
+                    <div class="form-row">
+                      <div class="col-md-3">
+                        <strong class="mr-3">虚拟币种类</strong>ETH</div>
+                      <div class="col-md-3">
+                        <strong class="mr-3">总算力</strong>{$or.power}
+                        <span class="ml-2">MH/S</span>
+                      </div>
+                      <div class="col-md-3">
+                        <strong class="mr-3">套餐开始时间</strong>{$or.start|date='Y-m-d',###}</div>
+                      <div class="col-md-3">
+                        <strong class="mr-3">套餐到期时间</strong>{$or.end|date='Y-m-d',###}</div>
+                      <div class="col-md-6 mt-2">
+                        <button type="button" class="btn btn-warning" style="width:12.8rem">
+                          <a href="{:U('Order/reorder')}?id={$or.id}">立即续费</a>
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                  <a class="card-footer text-white clearfix" href="{:U('payment')}">
+                    获取更多算力
+                    <i class="fa fa-fw fa-rocket"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            </volist>
+   </empty>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example DataTables Card-->
+    </div>
+
+    <!--#include file="include/footer.html"-->
+    <include file="Public:footer" />
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+
+    <div class="modal fade" id="bishideModal" tabindex="-1" role="dialog" aria-labelledby="bishideModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bishideModalLabel">确定退出个人中心?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">如果您结束了所有的操作可以点击退出</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+            <a class="btn btn-danger" href="{:U('Index/index')}">退出</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="bishideModal_paypassword" tabindex="-1" role="dialog" aria-labelledby="bishideModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">设置您的转账密码</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card card-paypassword mx-auto">
+              <div class="card-body">
+                <form id="form1" name="form1">
+                  <div class="form-group">
+                    <input class="form-control" id="tel" name="tel" type="text" aria-describedby="emailHelp" placeholder="输入注册手机号">
+                  </div>
+                  <div class="input-group mb-3">
+
+                    <input type="text" class="form-control" name="telcode" placeholder="输入验证码" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <input type="button" class="btn-danger" value="获取验证码" id="sendcode" onclick="settime(this)">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" name="payword" type="password" aria-describedby="emailHelp" placeholder="输入转账密码">
+                  </div>
+                  <div class="form-group">
+                    <input class="form-control" name="payword2" type="password" aria-describedby="emailHelp" placeholder="确认转账密码">
+                  </div>
+                  <!--<a class="btn btn-danger btn-block" href="#">设置转账密码</a>-->
+                  <input type="submit" class="btn btn-danger btn-block" value="设置转账密码">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    <div class="modal fade" id="bishideModal_email" tabindex="-1" role="dialog" aria-labelledby="bishideModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">绑定您的邮箱地址</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card card-paypassword mx-auto">
+              <div class="card-body">
+                <form id="form2" name="form2">
+                  <div class="form-group">
+                    <input id="email" class="form-control" name="mail" type="text" aria-describedby="emailHelp" placeholder="输入邮箱地址">
+                  </div>
+                  <div class="input-group mb-3">
+
+                    <input type="text" class="form-control" name="emailcode" placeholder="输入验证码" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <input type="button" class="btn-danger" id="sendcode2" value="获取验证码" onclick="settime(this)">
+                    </div>
+                  </div>
+
+                  <!--<a class="btn btn-danger btn-block" href="#">设置邮箱地址</a>-->
+                  <input type="submit" class="btn btn-danger btn-block" value="设置邮箱地址">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="modal fade" id="bishideModal_address" tabindex="-1" role="dialog" aria-labelledby="bishideModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">绑定您的钱包地址</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="alert alert-danger" role="alert">
+              <strong>尊敬的用户您好！</strong> 请仔细查看并核对您的钱包地址
+              <b class="text-bishide">绑定错误地址造成损失由您自己承担后果</b>。
+            </div>
+            <div class="card card-paypassword mx-auto">
+              <div class="card-body">
+                <form id="form3" name="form3">
+                  <div class="form-group">
+                    <input class="form-control" name="address" type="text" aria-describedby="emailHelp" placeholder="输入钱包地址"><br/>
+                    <input class="form-control" name="payword_ads" type="password" aria-describedby="emailHelp" placeholder="输入提现密码">
+                  </div>
+                  <!--<a class="btn btn-danger btn-block" href="#">绑定</a>-->
+                  <input type="submit" class="btn btn-danger btn-block" value="绑定">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</body>
+  <include file="Public:script" />
+    <!--#include file="include/script.html"-->
+
+</html>
+  <script>
+      $('#form1').submit(function(){
+          $(this).ajaxSubmit({
+              url:"{:U('setpay')}",
+              type:'post',
+              dataType:'json',
+              success:function(msg){
+                  if(msg.status==1){
+                      //表示提交注册成功
+                      window.location.href = "{:U('Personal/index')}";
+                  }else{
+                      layer.msg(msg.msg);
+                  }
+              }
+          });
+          //阻止当前的表单默认的提交
+          return false;
+      });
+
+      $('#form2').submit(function(){
+          $(this).ajaxSubmit({
+              url:"{:U('setmail')}",
+              type:'post',
+              dataType:'json',
+              success:function(msg){
+                  if(msg.status==1){
+                      //表示提交注册成功
+                      window.location.href = "{:U('Personal/index')}";
+                  }else{
+                      layer.msg(msg.msg);
+                  }
+              }
+          });
+          //阻止当前的表单默认的提交
+          return false;
+      });
+      $('#form3').submit(function(){
+          $(this).ajaxSubmit({
+              url:"{:U('setAddress')}",
+              type:'post',
+              dataType:'json',
+              success:function(msg){
+                  if(msg.status==1){
+                      //表示提交注册成功
+                      window.location.href = "{:U('Personal/index')}";
+                  }else{
+                      layer.msg(msg.msg);
+                  }
+              }
+          });
+          //阻止当前的表单默认的提交
+          return false;
+      });
+
+
+      //实现用户点击按钮发送验证
+      $('#sendcode2').click(function(){
+          //获取当前用户的输入的手机号
+          var email = $('#email').val();
+          $.ajax({
+              url:"{:U('Email/sendemail')}",
+              data:{email:email},
+              type:'post',
+              success:function(msg){
+                  if(msg.status==0){
+                      layer.msg(msg.msg);
+                  }else if(msg.status ==1){
+                      layer.msg('发送成功');
+                  }
+              }
+          });
+      });
+      $('#sendcode').click(function(){
+          //获取当前用户的输入的手机号
+          var tel = $('#tel').val();
+          $.ajax({
+              url:"{:U('sendcode')}",
+              data:{tel:tel},
+              type:'post',
+              success:function(msg){
+                  if(msg.status==0){
+                      layer.msg(msg.msg);
+                  }else{
+                      layer.msg('发送成功');
+                  }
+              }
+          });
+      });
+
+  </script>
